@@ -11,9 +11,19 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: USER-SERVICE
+                fallbackuri: forward:/userServiceFallBack
         - id: ALBUM-SERVICE
           uri: lb://ALBUM-SERVICE
           predicates:
             - Path=/albums/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: ALBUM-SERVICE
+                fallbackuri: forward:/albumServiceFallBack
   config:
     import: configserver:http://localhost:9296
