@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Component
-@Endpoint(id = "features")
+@Endpoint(id = "features1")
 public class FeatureEndPoint {
     private final Map<String, Feature> featureMap = new ConcurrentHashMap<>();
 

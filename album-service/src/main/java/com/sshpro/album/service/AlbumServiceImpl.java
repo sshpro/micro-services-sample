@@ -40,7 +40,7 @@ public class AlbumServiceImpl implements AlbumService {
             throw new EntityNotFoundException("Album is not found for id: " + id);
         }
         Album album = albumOptional.get();
-        User user = restTemplate.getForObject("http://localhost:9001/users/" + album.getId(), User.class);
+        User user = restTemplate.getForObject("http://USER-SERVICE/users/" + album.getUserId(), User.class);
         return new ResponseTemplate(album, user);
     }
 

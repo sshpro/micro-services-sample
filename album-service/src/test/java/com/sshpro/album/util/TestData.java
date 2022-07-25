@@ -46,7 +46,7 @@ public class TestData {
                 .title("Title")
                 .build();
 
-        return new ResponseTemplate(getUser(), album);
+        return new ResponseTemplate(album, getUser());
 
     }
 
