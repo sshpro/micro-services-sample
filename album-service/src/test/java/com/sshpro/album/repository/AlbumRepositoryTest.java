@@ -8,20 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.sshpro.album.entity.Album;
 import com.sshpro.album.util.TestData;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@ActiveProfiles("test")
 class AlbumRepositoryTest {
-    @Autowired
-    private AlbumRepository albumRepository;
-
-    @Autowired
-    private TestEntityManager testEntityManager;
+    private final AlbumRepository albumRepository;
+    private final TestEntityManager testEntityManager;
 
     private Long albumId;
+
+    AlbumRepositoryTest(@Autowired AlbumRepository repository,
+            @Autowired TestEntityManager testEntityManager) {
+        this.albumRepository = repository;
+        this.testEntityManager = testEntityManager;
+    }
 
     @BeforeEach
     void setUp() {

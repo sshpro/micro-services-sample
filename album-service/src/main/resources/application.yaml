@@ -6,7 +6,5 @@ spring:
     name: ALBUM-SERVICE
   profiles:
     active: dev
-  config:
-    import: configserver:http://localhost:9296
   zipkin:
     base-url: http://127.0.0.1:9411

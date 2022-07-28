@@ -18,24 +18,31 @@ import org.mockito.stubbing.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.web.client.RestTemplate;
 
 import com.sshpro.album.entity.Album;
 import com.sshpro.album.repository.AlbumRepository;
 import com.sshpro.album.vo.ResponseTemplate;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class AlbumServiceTest {
-
-    @Autowired
-    private AlbumService albumService;
+    private final AlbumService albumService;
 
     @MockBean
     AlbumRepository albumRepository;
 
+    @MockBean
+    RestTemplate restTemplate;
+
+    public AlbumServiceTest(@Autowired AlbumService service){
+        this.albumService = service;
+    }
+
     @BeforeEach
     void setUp() {
         ArrayList<Album> albums = getAlbums();
-
         Mockito.when(albumRepository.save(albums.get(0))).thenReturn(albums.get(0));
         Mockito.when(albumRepository.findAll()).thenReturn(albums);
         Mockito.when(albumRepository.findAllByUserId(1L)).thenReturn(albums);
@@ -45,7 +52,6 @@ class AlbumServiceTest {
         });
 
     }
-
 
 
     @Test

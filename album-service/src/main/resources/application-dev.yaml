@@ -3,6 +3,8 @@ spring:
   h2:
     console:
       enabled: 'true'
+  config:
+    import: configserver:http://localhost:9296
   datasource:
     username: admin
     password: 
