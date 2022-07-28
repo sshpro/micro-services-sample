@@ -15,8 +15,11 @@ import com.sshpro.user.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    UserServiceImpl(@Autowired UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public User save(User user) {

@@ -17,11 +17,15 @@ import com.sshpro.album.vo.User;
 
 @Service
 public class AlbumServiceImpl implements AlbumService {
-    @Autowired
-    private AlbumRepository albumRepository;
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final AlbumRepository albumRepository;
+    private final RestTemplate restTemplate;
+
+    public AlbumServiceImpl(@Autowired AlbumRepository albumRepository,
+            @Autowired RestTemplate restTemplate) {
+        this.albumRepository = albumRepository;
+        this.restTemplate = restTemplate;
+    }
 
     @Override
     public Album save(Album album) {

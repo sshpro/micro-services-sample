@@ -20,8 +20,12 @@ import com.sshpro.album.vo.ResponseTemplate;
 @RestController
 public class AlbumController {
 
-    @Autowired
-    private AlbumService albumService;
+    
+    private final AlbumService albumService;
+
+    public AlbumController(@Autowired AlbumService service) {
+        this.albumService = service;
+    }
 
     @PostMapping("/albums")
     public Album save(@Valid @RequestBody Album album) {

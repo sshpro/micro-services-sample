@@ -19,8 +19,11 @@ import com.sshpro.user.service.UserService;
 @RestController
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(@Autowired UserService service) {
+        this.userService = service;
+    }
 
     @PostMapping("/users")
     public User save(@Valid @RequestBody User user) {
