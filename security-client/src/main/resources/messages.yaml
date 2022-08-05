@@ -1,0 +1,12 @@
+message: 
+  invalid: 
+    email: "Invalid email"
+    token: "Invalid token"
+  passwordMismatch: "Passwords dont match"
+  resetPasswordEmail: "Reset password email sent"
+  success:
+    forgetPassword: "Forget Password"
+    registration: "Registration successful"
+    resendVerificationToken: "New registration token sent"
+    resetPassword: "Password reset successful"
+    updatePassword: "Update Password successful"
