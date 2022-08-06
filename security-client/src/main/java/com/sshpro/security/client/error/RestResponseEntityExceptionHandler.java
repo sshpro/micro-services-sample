@@ -25,4 +25,10 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         ErrorResponse errorMessage = new ErrorResponse(HttpStatus.UNAUTHORIZED, exception.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage);
     }
+
+    @ExceptionHandler(IncorrectPasswordException.class)
+    public ResponseEntity<ErrorResponse> incorrectPassword(IncorrectPasswordException exception) {
+        ErrorResponse errorMessage = new ErrorResponse(HttpStatus.UNAUTHORIZED, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorMessage);
+    }
 }

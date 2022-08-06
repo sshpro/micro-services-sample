@@ -16,12 +16,15 @@ public interface RegistrationService {
 
     boolean validateRegistrationToken(String token);
 
-    User findUser(String email);
+    User findUserByEmail(String email);
 
-    // String generatePasswordVerificationToken(String userEmail);
+    void savePasswordResetToken(User user, String token);
 
-    // void savePassword(String token, String newPassword);
+    void savePassword(String token, String newPassword);
 
-    // void updatePassword(String oldPassword, String newPassword);
+    void savePassword(User user, String newPassword);
 
+    void validatePasswordResetToken(String token);
+
+    void validatePassword(String email, String oldPassword);
 }
